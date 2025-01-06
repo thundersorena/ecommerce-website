@@ -1,0 +1,131 @@
+
+@font-face {
+    font-family: "IRANSansWeb";
+    src: url("../fonts/IRANSansWeb.eot");
+    /* IE */
+    src: url("../fonts/IRANSansWeb.eot?#iefix") format("embedded-opentype"),
+      /* IE */
+      url("../fonts/IRANSansWeb.woff") format("woff"),
+      /* Modern Browsers */
+      url("../fonts/IRANSansWeb.ttf") format("truetype");
+    /* Safari, Android, iOS */
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: "morabba";
+    src:
+      url("../fonts/Morabba-Light.ttf") format("truetype");
+    font-weight: normal;
+  }
+  @font-face {
+    font-family: "morabbaBold";
+    src:
+      url("../fonts/Morabba-Bold.ttf") format("truetype");
+    font-weight: Bold;
+  }
+  @font-face {
+    font-family: "morabbaBlack";
+    src:
+      url("../fonts/Morabba-Black.ttf") format("truetype");
+    font-weight: Bolder;
+  }
+  a {
+    color: #007bff; /* رنگ دلخواه شما */
+    text-decoration: none; /* حذف خط زیر لینک‌ها */
+  }
+  
+  a:hover {
+    color: #0056b3; /* رنگ دلخواه شما برای حالت هاور */
+    text-decoration: none; /* اضافه کردن خط زیر لینک هنگام هاور (اختیاری) */
+  }
+  
+  html {
+    font-size: 11px;
+  }
+  p{
+    line-height: 3rem
+  
+  }
+  body {
+    font-size: 1rem;
+  
+  }
+  .semicircular {
+    height: 220px;
+    width: 100%;
+    border-radius: 0 0 100% 150px;
+    background: linear-gradient(#B1E1FF, #AFB4FF);
+  }
+  
+  .swiper-pagination-progressbar-fill {
+    background-color: #f26822; /* رنگ دلخواه شما */
+  }
+  
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+  
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+  
+  
+  .worksample-pic >img{
+    transform: scale(1);
+    transition: ease-in-out 0.5s;
+  
+  }
+  .worksample-pic  >img:hover{
+    transform: scale(1.2);
+    transition: ease-in-out 0.5s;
+  
+  }
+  
+  @media print {
+    body {
+      visibility: hidden;
+    }
+    
+    .no-print {
+      visibility: visible;
+    }
+  
+    /* مخفی کردن هدر و فوتر پیش‌فرض مرورگر (شامل URL و عنوان صفحه) */
+    @page {
+      margin: 0;
+    }
+    .gray-text {
+      color: gray !important;
+    }
+    header, footer {
+      display: none;
+    }
+    td, th {
+      color: inherit !important;
+    }
+  }
+  
+  
