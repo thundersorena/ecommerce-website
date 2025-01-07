@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import MenuAccesItems from './menuAccessItem';
 import menu from '../mock/menu';
 import PublicMenu from '../mock/menu';
-import ItolsLogo from '../assets/svg/Itols.png'
+import ItolsLogo from '../assets/svg/logo.jpg'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PhoneIcon from '@mui/icons-material/Phone';
 import MailIcon from '@mui/icons-material/Mail';

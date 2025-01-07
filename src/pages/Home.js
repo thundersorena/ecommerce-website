@@ -47,16 +47,29 @@ const Home = () => {
 
     return (
         <Layout FullWidth={true}>
-            <Box >
+
+            <Box>
                 <HeroSection />
             </Box>
 
             <Box sx={{ marginBottom: '40px', marginTop: '10px' }}>
-                <Typography variant='h3' sx={{ textAlign: "center" }}>محصولات</Typography>
+                <Typography
+                    variant="h3"
+                    sx={{
+                        textAlign: 'center',
+                        fontFamily: 'iranSansBold',
+                        background: 'linear-gradient(90deg, #4caf50, #81c784)',
+                        WebkitBackgroundClip: 'text',
+                        color: 'transparent',
+                        mb: 2,
+                    }}
+                >
+                    محصولات
+                </Typography>
                 <Swiper
                     modules={[Autoplay, Navigation]}
                     pagination={{
-                        type: "progressbar",
+                        type: 'progressbar',
                         clickable: true,
                     }}
                     spaceBetween={10}
@@ -70,33 +83,55 @@ const Home = () => {
                 >
                     {products?.length ? (
                         products.map((x, index) => (
-                            <SwiperSlide key={`sliderPic${index}`} style={{ height: '100%' }}>
+                            <SwiperSlide
+                                key={`sliderPic${index}`}
+                                style={{
+                                    height: '100%',
+                                    borderRadius: '10px',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.3)',
+                                    transition: 'transform 0.3s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'scale(1.05)',
+                                    },
+                                }}
+                            >
                                 <Link to={x?.link} style={{ height: '100%' }}>
                                     <Stack height={'100%'} position="relative">
                                         <img
                                             src={x?.image}
-                                            alt={"درباره " + x.title}
+                                            alt={'درباره ' + x.title}
                                             style={{
-                                                objectFit: "contain",
+                                                objectFit: 'contain',
                                                 width: '100%',
-                                                height: '100%',
+                                                height: '50%',
                                                 justifyContent: 'center',
                                                 display: 'flex',
                                                 margin: 'auto',
+                                                transition: 'transform 0.3s ease-in-out',
                                             }}
                                         />
                                         {(x?.title || x?.description) && (
-                                            <Stack position={'absolute'} bottom={0} right={0} width={'100%'}>
-                                                <Paper sx={{ backgroundColor: '#FF9800' }}>
-                                                    <Typography
-                                                        sx={{ textAlign: "center" }}
-                                                        color={"white"}
-                                                        fontFamily={'morabbaBold'}
-                                                    >
-                                                        <InventoryIcon sx={{ mr: 0.7 }} />
-                                                        {x?.title?.slice(0, 3)}
-                                                    </Typography>
-                                                </Paper>
+                                            <Stack
+                                                position={'absolute'}
+                                                bottom={0}
+                                                right={0}
+                                                width={'100%'}
+                                                sx={{
+                                                    backgroundColor: 'rgba(0,0,0,0.7)',
+                                                    padding: '10px',
+                                                    textAlign: 'center',
+                                                    color: 'white',
+                                                    backdropFilter: 'blur(10px)',
+                                                }}
+                                            >
+                                                <Typography
+                                                    color="white"
+                                                    sx={{ fontFamily: 'morabbaBold', fontSize: '16px' }}
+                                                >
+                                                    <InventoryIcon sx={{ mr: 0.7 }} />
+                                                    {x?.title?.slice(0, 3)}
+                                                </Typography>
                                             </Stack>
                                         )}
                                     </Stack>
@@ -118,7 +153,6 @@ const Home = () => {
                 </Swiper>
             </Box>
 
-
             <Grid container spacing={4} justifyContent="center" sx={{ marginBottom: 5 }}>
                 {products?.length
                     ? products.slice(0, 8).map((product, index) => (
@@ -127,18 +161,18 @@ const Home = () => {
                             item
                             xl={3}
                             lg={3}
-                            md={4}
-                            sm={4}
-                            xs={6}
+                            md={3}
+                            sm={3}
+                            xs={3}
                             style={{ display: "flex", justifyContent: "center" }}
                         >
                             <Box
                                 sx={{
-                                    width: "150px",
-                                    height: "150px",
+                                    width: "180px",
+                                    height: "180px",
                                     borderRadius: "50%",
                                     backgroundColor: "#f5f5f5",
-                                    boxShadow: "0 8px 15px rgba(0,0,0,0.1)",
+                                    boxShadow: "0 8px 15px rgba(0, 0, 0, 0.56)",
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
@@ -189,95 +223,99 @@ const Home = () => {
 
 
 
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <Box sx={{ width: '100%' }}>
-                        <img src={photo} alt="placeholder" style={{ width: '100%' }} />
-                    </Box>
-                </Grid>
-
-                <Grid item xs={12} md={6}>
-                    <Typography sx={{ textAlign: "center" }} variant="h4">
-                        خوش آمدید
-                    </Typography>
-                    <Divider sx={{ m: 5 }} />
-                    <Typography variant="body1" sx={{ textAlign: 'left', mb: 2 }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor,
-                        libero et aliquet aliquet, ligula nisl tincidunt purus, ac lacinia nunc nisl a justo.
-                        Nullam auctor, libero et aliquet aliquet.
-                    </Typography>
-                    <Typography variant="body1" sx={{ textAlign: 'left', mb: 2 }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor,
-                        libero et aliquet aliquet, ligula nisl tincidunt purus, ac lacinia nunc nisl a justo.
-                        Nullam auctor, libero et aliquet aliquet.
-                    </Typography>
-
-                    <Box
-                        sx={{
-                            position: 'relative',
-                            height: '30vh',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'flex-end',
-                            pb: 2,
-                        }}
-                    >
-                        <Button
-                            sx={{
-                                textAlign: "center",
-                                justifyContent: "center",
-                            }}
-                            variant="contained"
-                            disableElevation
-                        >
-                            اینجا کلیک کنید
-                        </Button>
-                    </Box>
-                </Grid>
-            </Grid>
-
-            <Box my={2} px={2} py={2} display={'flex'} alignItems={'center'} style={{ zIndex: 450 }}>
-                <Stack width={'100%'} direction={'column'}>
+            <Box
+                my={2}
+                px={2}
+                py={4}
+                display={'flex'}
+                alignItems={'center'}
+                style={{ zIndex: 450 }}
+                sx={{
+                    backgroundColor: '#F5F5F5', // پس‌زمینه ملایم
+                    boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.15)', // سایه برای برجسته‌کردن
+                    borderRadius: '16px', // گوشه‌های گرد
+                }}
+            >
+                <Stack width={'100%'} direction={'column'} spacing={2}>
                     <Link to={'/Store'}>
                         <Typography
                             fontFamily={'morabbaBlack'}
                             fontSize={24}
                             display={'inline'}
-                            color={colors.text}
+                            color={'#333'}
+                            sx={{
+                                textAlign: 'center',
+                                '&:hover': {
+                                    color: '#809D3C', // رنگ تغییر در هنگام هاور
+                                    textDecoration: 'underline',
+                                },
+                            }}
                         >
                             نمونه کارها
                         </Typography>
                         <Typography
                             fontSize={13}
                             display={'inline'}
-                            sx={{ ml: 1 }}
-                            color={colors.orange1}
+                            sx={{ ml: 1, color: '#FF9800' }}
                         >
                             مشاهده‌همه
                         </Typography>
                     </Link>
 
-                    <Grid container spacing={2}>
+                    <Grid container spacing={3}>
                         {products?.length ? (
                             <>
                                 {products?.slice(0, 5)?.map((x, index) => (
-                                    <Grid key={`Store-${index}`} item xl={2} lg={3} md={3} sm={4} xs={4}>
-                                        <Box>
+                                    <Grid
+                                        key={`Store-${index}`}
+                                        item
+                                        xl={2}
+                                        lg={3}
+                                        md={4}
+                                        sm={6}
+                                        xs={12}
+                                    >
+                                        <Box
+                                            sx={{
+                                                position: 'relative',
+                                                overflow: 'hidden',
+                                                borderRadius: '12px',
+                                                boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.1)',
+                                                '&:hover img': {
+                                                    transform: 'scale(1.1)', // افکت بزرگنمایی روی تصویر
+                                                },
+                                                '&:hover .title-overlay': {
+                                                    opacity: 1,
+                                                    transform: 'translateY(0)', // نمایش عنوان با انیمیشن
+                                                },
+                                            }}
+                                        >
                                             <img
                                                 src={x?.image}
-                                                alt={"درباره " + x.title}
+                                                alt={'درباره ' + x.title}
                                                 style={{
-                                                    objectFit: "cover",
+                                                    objectFit: 'cover',
                                                     width: '100%',
-                                                    height: '50%',
-                                                    justifyContent: 'center',
-                                                    display: 'flex',
-                                                    margin: 'auto',
+                                                    height: '200px',
+                                                    transition: 'all 0.3s ease',
                                                 }}
                                             />
                                             <Typography
-                                                sx={{ textAlign: 'center' }}
-                                                fontFamily={'morabbaBold'}
+                                                className="title-overlay"
+                                                sx={{
+                                                    position: 'absolute',
+                                                    bottom: '10%',
+                                                    left: '5%',
+                                                    transform: 'translateY(50%)',
+                                                    color: '#fff',
+                                                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                                    padding: '6px 12px',
+                                                    borderRadius: '8px',
+                                                    fontSize: '14px',
+                                                    textAlign: 'center',
+                                                    opacity: 0,
+                                                    transition: 'all 0.3s ease-in-out',
+                                                }}
                                             >
                                                 {x.title.slice(0, 3)}
                                             </Typography>
@@ -285,26 +323,33 @@ const Home = () => {
                                     </Grid>
                                 ))}
 
-                                <Grid item xl={2} lg={3} md={3} sm={4} xs={4}>
+                                <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
                                     <Link to="/Store">
                                         <Box
-                                            width={'100%'}
-                                            minHeight={100}
-                                            height={'80%'}
-                                            borderRadius={3}
-                                            bgcolor={'gray'}
-                                            display={'flex'}
-                                            alignItems={'center'}
-                                            justifyContent={'center'}
+                                            sx={{
+                                                width: '100%',
+                                                minHeight: 150,
+                                                height: '100%',
+                                                borderRadius: '12px',
+                                                backgroundColor: '#809D3C',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: 'white',
+                                                fontWeight: 'bold',
+                                                '&:hover': {
+                                                    backgroundColor: '#A9C46C', // تغییر رنگ در هاور
+                                                },
+                                            }}
                                         >
-                                            <Typography color={'whitesmoke'}>مشاهده همه {'>'}</Typography>
+                                            <Typography>مشاهده همه {'>'}</Typography>
                                         </Box>
                                     </Link>
                                 </Grid>
                             </>
                         ) : (
-                            Array.from({ length: 10 }).map((_, index) => (
-                                <Grid key={`Store-${index}`} item xl={2} lg={3} md={3} sm={4} xs={4}>
+                            Array.from({ length: 5 }).map((_, index) => (
+                                <Grid key={`Store-${index}`} item xl={2} lg={3} md={4} sm={6} xs={12}>
                                     <Skeleton variant="rounded" height={150} />
                                 </Grid>
                             ))
@@ -312,6 +357,7 @@ const Home = () => {
                     </Grid>
                 </Stack>
             </Box>
+
         </Layout>
     );
 };
