@@ -1,17 +1,48 @@
-import { BrowserRouter } from 'react-router-dom';
-import React, { createContext } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { ThemeModeProvider } from './component/RTL';
-import Layout from './component/Layout';
-import Home from './pages/Home';
 import "./assets/css/Fonts.css";
 import "./assets/css/custom.css";
+import PublicRouts from './App/PublicRouts';
+import { ToastContainer } from 'react-toastify';
+import CustomSwitch from './App/CustomeSwitch';
+import { BaseColor } from './component/Tools';
+import { Box } from '@mui/material';
+import { isMobile, MobileView } from 'react-device-detect';
+import Home from './pages/Home';
+import StoreSection from './pages/store/StoreSection';
 function App() {
+
+
+    const [UserRole, setUserRole] = useState("publicUser");
+    const [MyRout, setMyRout] = useState(<PublicRouts />);
+
+
+    useEffect(() => {
+        setMyRout(<PublicRouts />);
+        setUserRole("publicUser");
+    }, [])
+
+
+
     return (
-        <BrowserRouter>
-            <ThemeModeProvider>
-                <Home />
-            </ThemeModeProvider>
-        </BrowserRouter>
+
+        <ThemeModeProvider>
+            <Box overflowX="hidden" backgroundColor={BaseColor.background} minHeight="100vh">
+
+                <CustomSwitch>
+                    {/* <Home />
+                    <StoreSection /> */}
+                    <PublicRouts />
+                </CustomSwitch>
+                {isMobile && (
+                    <MobileView>
+                        {/* <Navigations2 /> */}
+                    </MobileView>
+                )}
+            </Box>
+            <ToastContainer theme="colored" style={{ zIndex: 12000 }} />
+        </ThemeModeProvider>
+
     );
 }
 

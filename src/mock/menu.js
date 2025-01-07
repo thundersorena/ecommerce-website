@@ -17,11 +17,11 @@ const PublicMenu = () => [
 
 
     { id: 1, title: 'خانه', link: '/', active: true, icon: <HomeRoundedIcon />, },
-    { id: 2, title: 'خدمات', link: '/Services', active: true, icon: <HomeRepairServiceRoundedIcon />, },
+    { id: 2, title: 'فروشگاه', link: "/Store", active: true, icon: <HomeRepairServiceRoundedIcon />, },
     { id: 3, title: 'محصولات', link: '/Products', active: true, icon: <PrecisionManufacturingIcon />, },
-    { id: 4, title: 'نمونه‌کار', link: '/WorkSamples', active: true, icon: <InventoryIcon />, },
-    { id: 5, title: 'مشتریان', link: '/Customers', active: true, icon: <ApartmentRoundedIcon />, },
-    { id: 6, title: 'مقالات', link: '/Blogs', active: true, icon: <BookRoundedIcon />, },
+    // { id: 4, title: 'نمونه‌کار', link: '/WorkSamples', active: true, icon: <InventoryIcon />, },
+    // { id: 5, title: 'مشتریان', link: '/Customers', active: true, icon: <ApartmentRoundedIcon />, },
+    // { id: 6, title: 'مقالات', link: '/Blogs', active: true, icon: <BookRoundedIcon />, },
     { id: 7, title: 'تماس‌با‌ما', link: '/ContactUs', active: true, icon: <AddIcCallRoundedIcon />, },
 
 

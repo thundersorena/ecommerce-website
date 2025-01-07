@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../component/Layout';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { getAllProducts } from '../api/AllApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,6 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import photo from "../assets/svg/6.jpg"
 import { BaseColor } from '../component/Tools';
-import StoreSection from './store/StoreSection';
 import HeroSection from './HeroSection';
 
 const Home = () => {
@@ -258,20 +257,19 @@ const Home = () => {
                         </Typography>
                     </Link>
 
-                    <Grid container spacing={2} mt={2}>
+                    <Grid container spacing={2}>
                         {products?.length ? (
                             <>
                                 {products?.slice(0, 5)?.map((x, index) => (
                                     <Grid key={`Store-${index}`} item xl={2} lg={3} md={3} sm={4} xs={4}>
-                                        <StoreSection data={x} heightPic={130} />
                                         <Box>
                                             <img
                                                 src={x?.image}
                                                 alt={"درباره " + x.title}
                                                 style={{
-                                                    objectFit: "contain",
+                                                    objectFit: "cover",
                                                     width: '100%',
-                                                    height: '100%',
+                                                    height: '50%',
                                                     justifyContent: 'center',
                                                     display: 'flex',
                                                     margin: 'auto',
@@ -281,14 +279,14 @@ const Home = () => {
                                                 sx={{ textAlign: 'center' }}
                                                 fontFamily={'morabbaBold'}
                                             >
-                                                {x.title}
+                                                {x.title.slice(0, 3)}
                                             </Typography>
                                         </Box>
                                     </Grid>
                                 ))}
 
                                 <Grid item xl={2} lg={3} md={3} sm={4} xs={4}>
-                                    <Link to="/WorkSamples">
+                                    <Link to="/Store">
                                         <Box
                                             width={'100%'}
                                             minHeight={100}

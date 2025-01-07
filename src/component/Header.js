@@ -1,6 +1,6 @@
 import { Box, Divider, Drawer, FormControlLabel, IconButton, List, Stack, styled, Switch, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import MenuAccesItems from './menuAccessItem';
 import menu from '../mock/menu';
 import PublicMenu from '../mock/menu';
@@ -8,10 +8,11 @@ import ItolsLogo from '../assets/svg/Itols.png'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import PhoneIcon from '@mui/icons-material/Phone';
 import MailIcon from '@mui/icons-material/Mail';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { BaseColor } from './Tools';
 import { useThemeMode } from './RTL';
 import { useTheme } from '@mui/material/styles';
+
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -68,20 +69,23 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         }),
     },
 }));
-
 const Header = () => {
     const theme = useTheme();
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const location = useLocation();
-    const [isLOggedIn, setIsloggedIn] = useState(false);
+    const location = useLocation()
+    const [isLOggedIn, setIsloggedIn] = useState(false)
     const { toggleTheme, isDarkMode } = useThemeMode();
     const colors = BaseColor();
-    const menuItmes = PublicMenu();
-
+    const menuItmes = PublicMenu()
     useEffect(() => {
-        const token = localStorage.getItem('auth');
-        setIsloggedIn(!token);
-    }, []);
+        const token = localStorage.getItem('auth')
+        setIsloggedIn(!token)
+    }, [])
+
+    // const handleLogout = () => {
+    //     localStorage.removeItem('auth');
+    //     setIsloggedIn(false)
+    // }
 
     const toggleDrawer = (open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -89,7 +93,6 @@ const Header = () => {
         }
         setDrawerOpen(open);
     };
-
     const list = () => (
         <Box sx={{ width: '50vw' }} role="presentation" bgcolor={theme.palette.background.default} height={'100%'} onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
             <List>
@@ -97,46 +100,54 @@ const Header = () => {
             </List>
             <Divider />
             <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} onClick={toggleTheme} checked={isDarkMode} />} />
+
         </Box>
     );
-
     return (
         <>
-            <Drawer anchor={'right'} open={drawerOpen} onClose={toggleDrawer(false)}>
+            <Drawer
+                anchor={'right'}
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+            >
                 {list()}
+
             </Drawer>
 
-            <Stack display={'flex'} flexDirection={'row-reverse'} justifyContent={'space-between'} alignItems={'center'} width={'100%'} px={1.5} pt={1} backgroundColor={theme.palette.background.paper} position={'sticky'} top={0} zIndex={1000}>
-                <Stack display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} height={50} py={2}>
-                    {menuItmes.map(x => (
-                        <Link key={`menu_${x.id}`} to={x.link} role="button" aria-label={`menu-${x.title}`}>
-                            <Typography component={'span'} sx={{ '&:hover': { color: colors.orange1 }, mx: 1.2, display: { xl: 'block', lg: 'block', md: 'block', sm: 'none', xs: 'none' }, cursor: "pointer" }} fontSize={13} color={x.link === location.pathname ? theme.palette.text.disabled : colors.text}>
-                                {x.title}
-                            </Typography>
-                        </Link>
-                    ))}
+            <Stack display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} width={'100%'} px={1.5} pt={1} backgroundColor={theme.palette.background.paper} position={'sticky'} top={0} zIndex={1000}>
+
+                <Stack display={'flex'} flexDirection={'row'} alignItems={'center'} height={50} py={2}>
+                    {menuItmes.map(x => {
+                        return (
+                            <Link key={`menu_${x.id}`} to={x.link} role="button" aria-label={`menu-${x.title}`}>
+                                <Typography component={'span'} sx={{ '&:hover': { color: colors.orange1, }, mx: 1.2, display: { xl: 'block', lg: 'block', md: 'block', sm: 'none', xs: 'none' }, cursor: "pointer" }} fontSize={13} color={x.link === location.pathname ? theme.palette.text.disabled : colors.text} >{x.title}</Typography>
+                            </Link>
+
+                        )
+                    })}
 
                     <IconButton aria-label="Menu" sx={{ display: { xl: 'none', lg: 'none', md: 'none', sm: 'block', xs: 'block' } }} color='primary' size='large' onClick={e => { setDrawerOpen(true) }}>
                         <MenuOutlinedIcon fontSize='large' />
                     </IconButton>
                 </Stack>
 
-                <Stack display={'flex'} justifyContent={'space-between'} width={{ xl: '15%', lg: '20%', md: '25%', sm: '50%', xs: '60%' }} flexDirection={'row-reverse'}>
-                    <Typography component={'a'} sx={{ display: 'flex', alignItems: 'center' }} href='mailto:info@itols.ir'>
-                        info@itols.ir
-                        <MailIcon sx={{ ml: 0.5, color: colors.orange1 }} fontSize='medium' />
-                    </Typography>
+                <Stack display={'flex'} justifyContent={'space-between'} width={{ xl: '15%', lg: '20%', md: '25%', sm: '50%', xs: '60%' }} flexDirection={'row'}>
+                    <Typography component={'a'} sx={{ display: 'flex', alignItems: 'center' }} href='tel:026-33515366'>026-33515366<PhoneIcon sx={{ ml: 0.5, color: colors.orange1 }} fontSize='medium' /></Typography>
+                    <Typography component={'a'} sx={{ display: 'flex', alignItems: 'center' }} href='mailto:info@itols.ir'>info@itols.ir<MailIcon sx={{ ml: 0.5, color: colors.orange1 }} fontSize='medium' /></Typography>
                 </Stack>
 
                 <Stack direction={'row'} spacing={1}>
-                    <Box sx={{ display: { xl: 'block', lg: 'block', md: 'block', sm: 'none', xs: 'none' } }}>
+                    <Box sx={{ display: { xl: 'block', lg: 'block', md: 'block', sm: 'none', xs: 'none' } }} >
                         <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} onClick={toggleTheme} checked={isDarkMode} />} />
+
                     </Box>
 
                     <Link to={'/'}>
-                        <img src={ItolsLogo} width={70} alt="Itols" />
+                        <img src={ItolsLogo} width={50} alt='LogoItols' style={{ filter: isDarkMode ? 'brightness(1) ' : 'brightness(0) grayscale(100%)' }} />
+
                     </Link>
                 </Stack>
+
             </Stack>
         </>
     );
