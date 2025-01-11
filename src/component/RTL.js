@@ -12,11 +12,11 @@ const darkTheme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            main: '#F36F25',
+            main: '#5D8736',
 
         },
         secondary: {
-            main: '#e7a825',
+            main: '#809D3C',
         },
         info: {
             main: '#ffffff',
@@ -24,8 +24,8 @@ const darkTheme = createTheme({
 
         text: {
             primary: '#ffffff',
-            secondary: '#F36F25',
-            disabled: '#FFFF00'
+            secondary: '#5D8736',
+            disabled: '#A9C46C'
 
         },
         background: {

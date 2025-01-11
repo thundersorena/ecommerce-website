@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Layout from '../component/Layout';
+import Layout from '../../component/Layout';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { getAllProducts } from '../api/AllApi';
+import { getAllProducts } from '../../api/AllApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -11,9 +11,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
-import photo from "../assets/svg/6.jpg"
-import { BaseColor } from '../component/Tools';
-import HeroSection from './HeroSection';
+import { BaseColor } from '../../component/Tools';
+import HeroSection from '../Home/HeroSection';
+import GSAPExample from '../Home/GSAPExample';
+import FloatingImage from '../Home/Story';
+import PhotoSection from '../Home/PhotoSection';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -50,6 +52,10 @@ const Home = () => {
 
             <Box>
                 <HeroSection />
+            </Box>
+
+            <Box>
+                <PhotoSection />
             </Box>
 
             <Box sx={{ marginBottom: '40px', marginTop: '10px' }}>
@@ -153,73 +159,11 @@ const Home = () => {
                 </Swiper>
             </Box>
 
-            <Grid container spacing={4} justifyContent="center" sx={{ marginBottom: 5 }}>
-                {products?.length
-                    ? products.slice(0, 8).map((product, index) => (
-                        <Grid
-                            key={`Store-${index}`}
-                            item
-                            xl={3}
-                            lg={3}
-                            md={3}
-                            sm={3}
-                            xs={3}
-                            style={{ display: "flex", justifyContent: "center" }}
-                        >
-                            <Box
-                                sx={{
-                                    width: "180px",
-                                    height: "180px",
-                                    borderRadius: "50%",
-                                    backgroundColor: "#f5f5f5",
-                                    boxShadow: "0 8px 15px rgba(0, 0, 0, 0.56)",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    position: "relative",
-                                    overflow: "hidden",
-                                    cursor: "pointer",
-                                    "&:hover .hover-title": {
-                                        opacity: 1,
-                                        transform: "translateY(0)",
-                                    },
-                                }}
-                            >
-                                <img
-                                    src={product?.image || "https://via.placeholder.com/150"}
-                                    alt={product?.title?.slice(0, 3) || "placeholder"}
-                                    style={{
-                                        width: "100%",
-                                        height: "100%",
-                                        objectFit: "cover",
-                                        borderRadius: "50%",
-                                    }}
-                                />
-                                <Typography
-                                    className="hover-title"
-                                    sx={{
-                                        position: "absolute",
-                                        bottom: "10%",
-                                        left: "5%",
-                                        transform: "translate(-100%, 0px)",
-                                        color: "#fff",
-                                        backgroundColor: "rgba(0, 0, 0, 0.7)",
-                                        padding: "6px 12px",
-                                        borderRadius: "12px",
-                                        fontSize: "14px",
-                                        textAlign: "center",
-                                        opacity: 0,
-                                        transition: "all 0.3s ease-in-out",
-                                    }}
-                                >
-                                    {product?.title || "Product Title"}
-                                </Typography>
-                            </Box>
-                        </Grid>
-                    ))
-                    : null}
-            </Grid>
 
+            <Box>
+                <GSAPExample />
+
+            </Box>
 
 
 
@@ -279,14 +223,16 @@ const Home = () => {
                                             sx={{
                                                 position: 'relative',
                                                 overflow: 'hidden',
-                                                borderRadius: '12px',
-                                                boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.1)',
+                                                borderRadius: '16px',
+                                                boxShadow: '0px 5px 20px rgba(0, 0, 0, 0.15)',
+                                                transition: 'all 0.4s ease',
                                                 '&:hover img': {
-                                                    transform: 'scale(1.1)', // افکت بزرگنمایی روی تصویر
+                                                    transform: 'scale(1.2)',
+                                                    filter: 'brightness(80%)', // تغییر روشنایی در هاور
                                                 },
-                                                '&:hover .title-overlay': {
+                                                '&:hover .info-overlay': {
                                                     opacity: 1,
-                                                    transform: 'translateY(0)', // نمایش عنوان با انیمیشن
+                                                    bottom: '10%', // نمایش اطلاعات با انیمیشن
                                                 },
                                             }}
                                         >
@@ -296,53 +242,66 @@ const Home = () => {
                                                 style={{
                                                     objectFit: 'cover',
                                                     width: '100%',
-                                                    height: '200px',
-                                                    transition: 'all 0.3s ease',
+                                                    height: '220px',
+                                                    transition: 'all 0.4s ease',
                                                 }}
                                             />
-                                            <Typography
-                                                className="title-overlay"
+                                            <Box
+                                                className="info-overlay"
                                                 sx={{
                                                     position: 'absolute',
-                                                    bottom: '10%',
+                                                    bottom: '-20%',
                                                     left: '5%',
-                                                    transform: 'translateY(50%)',
-                                                    color: '#fff',
-                                                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                                                    padding: '6px 12px',
-                                                    borderRadius: '8px',
-                                                    fontSize: '14px',
+                                                    right: '5%',
+                                                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                                    borderRadius: '12px',
+                                                    padding: '12px',
+                                                    color: 'white',
                                                     textAlign: 'center',
                                                     opacity: 0,
-                                                    transition: 'all 0.3s ease-in-out',
+                                                    transition: 'all 0.4s ease',
                                                 }}
                                             >
-                                                {x.title.slice(0, 3)}
-                                            </Typography>
+                                                <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+                                                    {x.title}
+                                                </Typography>
+                                                <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                                    قیمت: {x.price} تومان
+                                                </Typography>
+                                                <Button
+                                                    variant="contained"
+                                                    color="primary"
+                                                    size="small"
+                                                    sx={{ borderRadius: '20px', padding: '4px 12px' }}
+                                                >
+                                                    افزودن به سبد خرید
+                                                </Button>
+                                            </Box>
                                         </Box>
                                     </Grid>
                                 ))}
-
                                 <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
                                     <Link to="/Store">
                                         <Box
                                             sx={{
                                                 width: '100%',
-                                                minHeight: 150,
+                                                minHeight: 180,
                                                 height: '100%',
-                                                borderRadius: '12px',
-                                                backgroundColor: '#809D3C',
+                                                borderRadius: '16px',
+                                                backgroundColor: '#0066CC',
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 color: 'white',
                                                 fontWeight: 'bold',
                                                 '&:hover': {
-                                                    backgroundColor: '#A9C46C', // تغییر رنگ در هاور
+                                                    backgroundColor: '#0052A3', // تغییر رنگ در هاور
+                                                    transform: 'scale(1.05)',
                                                 },
+                                                transition: 'all 0.3s ease',
                                             }}
                                         >
-                                            <Typography>مشاهده همه {'>'}</Typography>
+                                            <Typography>مشاهده همه محصولات {'>'}</Typography>
                                         </Box>
                                     </Link>
                                 </Grid>
@@ -350,13 +309,33 @@ const Home = () => {
                         ) : (
                             Array.from({ length: 5 }).map((_, index) => (
                                 <Grid key={`Store-${index}`} item xl={2} lg={3} md={4} sm={6} xs={12}>
-                                    <Skeleton variant="rounded" height={150} />
+                                    <Skeleton
+                                        variant="rectangular"
+                                        height={180}
+                                        sx={{
+                                            borderRadius: '12px',
+                                            backgroundColor: '#f0f0f0',
+                                            animation: 'pulse 2s infinite',
+                                        }}
+                                    />
                                 </Grid>
                             ))
                         )}
                     </Grid>
+
+
                 </Stack>
             </Box>
+            <Box
+                sx={{
+                    width: "100%",
+                    margin: 0,
+                    padding: 0,
+                }}
+            >
+                <FloatingImage />
+            </Box>
+
 
         </Layout>
     );

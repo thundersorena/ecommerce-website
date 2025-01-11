@@ -8,8 +8,7 @@ import CustomSwitch from './App/CustomeSwitch';
 import { BaseColor } from './component/Tools';
 import { Box } from '@mui/material';
 import { isMobile, MobileView } from 'react-device-detect';
-import Home from './pages/Home';
-import StoreSection from './pages/store/StoreSection';
+import Home from './pages/Home/Home';
 function App() {
 
 
@@ -33,6 +32,7 @@ function App() {
                     {/* <Home />
                     <StoreSection /> */}
                     <PublicRouts />
+                    {/* <GsapExample /> */}
                 </CustomSwitch>
                 {isMobile && (
                     <MobileView>
