@@ -101,7 +101,7 @@ export const ThemeModeProvider = ({ children }) => {
         localStorage.setItem('themeMode', JSON.stringify(newMode));
     };
 
-    const currentTheme = isDarkMode ? lightTheme : darkTheme  ;
+    const currentTheme = isDarkMode ? lightTheme : darkTheme;
     return (
         <ThemeModeContext.Provider value={{ isDarkMode, toggleTheme }} >
             <ThemeProvider theme={currentTheme}>

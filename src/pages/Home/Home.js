@@ -16,6 +16,7 @@ import HeroSection from '../Home/HeroSection';
 import GSAPExample from '../Home/GSAPExample';
 import FloatingImage from '../Home/Story';
 import PhotoSection from '../Home/PhotoSection';
+import AnimatedTitle from '../../component/AnimatedTitle';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -49,28 +50,38 @@ const Home = () => {
 
     return (
         <Layout FullWidth={true}>
+           
 
             <Box>
                 <HeroSection />
             </Box>
 
-            <Box>
-                <PhotoSection />
-            </Box>
 
-            <Box sx={{ marginBottom: '40px', marginTop: '10px' }}>
+            {/* <Box>
+                <PhotoSection />
+            </Box> */}
+
+            <Paper
+                sx={{
+                    marginBottom: '40px',
+                    marginTop: '10px',
+                    padding: { xs: '10px', sm: '20px', md: '30px' },
+                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.27)',
+                    borderRadius: '12px',
+                }}
+            >
                 <Typography
-                    variant="h3"
-                    sx={{
-                        textAlign: 'center',
-                        fontFamily: 'iranSansBold',
-                        background: 'linear-gradient(90deg, #4caf50, #81c784)',
-                        WebkitBackgroundClip: 'text',
-                        color: 'transparent',
-                        mb: 2,
-                    }}
-                >
-                    محصولات
+                    variant="h3">
+                    <AnimatedTitle
+                        title="محصولات"
+                        containerStyles={{
+                            color: "#ff0310",
+                        }}
+                        wordStyles={{
+                            fontSize: "36px",
+                            color: "#fc0000",
+                        }}
+                    />
                 </Typography>
                 <Swiper
                     modules={[Autoplay, Navigation]}
@@ -81,10 +92,15 @@ const Home = () => {
                     spaceBetween={10}
                     slidesPerView={3}
                     navigation={true}
-                    style={{ height: '50vh' }}
+                    style={{ height: '40vh' }}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
+                    }}
+                    breakpoints={{
+                        320: { slidesPerView: 1, spaceBetween: 5 },
+                        640: { slidesPerView: 2, spaceBetween: 10 },
+                        1024: { slidesPerView: 3, spaceBetween: 20 },
                     }}
                 >
                     {products?.length ? (
@@ -95,14 +111,13 @@ const Home = () => {
                                     height: '100%',
                                     borderRadius: '10px',
                                     overflow: 'hidden',
-                                    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.3)',
+                                    // boxShadow: '0 8px 15px hsla(357, 100.00%, 50.60%, 0.20)',
                                     transition: 'transform 0.3s ease-in-out',
-                                    '&:hover': {
-                                        transform: 'scale(1.05)',
-                                    },
                                 }}
+                                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                             >
-                                <Link to={x?.link} style={{ height: '100%' }}>
+                                <Link to={x?.link} style={{ height: '100%', textDecoration: 'none' }}>
                                     <Stack height={'100%'} position="relative">
                                         <img
                                             src={x?.image}
@@ -111,7 +126,6 @@ const Home = () => {
                                                 objectFit: 'contain',
                                                 width: '100%',
                                                 height: '50%',
-                                                justifyContent: 'center',
                                                 display: 'flex',
                                                 margin: 'auto',
                                                 transition: 'transform 0.3s ease-in-out',
@@ -125,7 +139,7 @@ const Home = () => {
                                                 width={'100%'}
                                                 sx={{
                                                     backgroundColor: 'rgba(0,0,0,0.7)',
-                                                    padding: '10px',
+                                                    padding: { xs: '8px', sm: '10px', md: '15px' },
                                                     textAlign: 'center',
                                                     color: 'white',
                                                     backdropFilter: 'blur(10px)',
@@ -133,10 +147,13 @@ const Home = () => {
                                             >
                                                 <Typography
                                                     color="white"
-                                                    sx={{ fontFamily: 'morabbaBold', fontSize: '16px' }}
+                                                    sx={{
+                                                        fontFamily: 'morabbaBold',
+                                                        fontSize: { xs: '12px', sm: '14px', md: '16px' },
+                                                    }}
                                                 >
                                                     <InventoryIcon sx={{ mr: 0.7 }} />
-                                                    {x?.title?.slice(0, 3)}
+                                                    {x?.title?.slice(0, 15)}
                                                 </Typography>
                                             </Stack>
                                         )}
@@ -157,12 +174,12 @@ const Home = () => {
                         </Box>
                     )}
                 </Swiper>
-            </Box>
+            </Paper>
+
 
 
             <Box>
                 <GSAPExample />
-
             </Box>
 
 
@@ -216,8 +233,8 @@ const Home = () => {
                                         xl={2}
                                         lg={3}
                                         md={4}
-                                        sm={6}
-                                        xs={12}
+                                        sm={4}
+                                        xs={6}
                                     >
                                         <Box
                                             sx={{
@@ -280,7 +297,7 @@ const Home = () => {
                                         </Box>
                                     </Grid>
                                 ))}
-                                <Grid item xl={2} lg={3} md={4} sm={6} xs={12}>
+                                <Grid item xl={2} lg={3} md={4} sm={4} xs={6}>
                                     <Link to="/Store">
                                         <Box
                                             sx={{

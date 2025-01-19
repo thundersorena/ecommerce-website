@@ -62,13 +62,13 @@ const ScrollAnimation = () => {
             {products?.length ? (
                 products.slice(0, 8).map((product, index) => (
                     <Grid
-                        key={`Store-${index}`}
+                        // key={`Store-${index}`}
                         item
                         xl={3}
                         lg={3}
                         md={4}
-                        sm={6}
-                        xs={12}
+                        sm={3}
+                        xs={6}
                         style={{ display: "flex", justifyContent: "center" }}
                         ref={(el) => (refs.current[index] = el)} // ذخیره رفرنس
                     >
