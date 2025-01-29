@@ -62,13 +62,13 @@ const FloatingImage = () => {
                         border: "4px solid rgba(255, 255, 255, 0.5)",
                         transition: "border-color 0.3s ease",
                         "&:hover": {
-                            borderColor: "rgba(230, 0, 255, 0.8)",
-                            boxShadow: "0 30px 60px rgba(140, 0, 255, 0.4)",
+                            borderColor: "rgba(255, 72, 0, 0.8)",
+                            boxShadow: "0 30px 60px rgba(255, 0, 21, 0.4)",
                         },
                     }}
                 >
                     <AnimatedTitle
-                        title="Interactive 3D Box <br /> Amazing Experience"
+                        title="افق ورزش آریا <br /> ورزشی برای همه"
                         containerStyles={{
                             color: "#fff",
                         }}
@@ -104,13 +104,13 @@ const FloatingImage = () => {
                                     border: "4px solid rgba(255, 255, 255, 0.5)",
                                     transition: "border-color 0.3s ease",
                                     "&:hover": {
-                                        borderColor: "rgba(230, 0, 255, 0.8)",
-                                        boxShadow: "0 30px 60px rgba(140, 0, 255, 0.4)",
+                                        borderColor: "rgba(255, 72, 0, 0.8)",
+                                        boxShadow: "0 30px 60px rgba(255, 0, 21, 0.4)",
                                     },
                                 }}
                             >
                                 <AnimatedTitle
-                                    title="Interactive 3D Box <br /> Small Box"
+                                    title="افق ورزش آریا <br /> ورزشی برای همه"
                                     containerStyles={{
                                         color: "#fff",
                                     }}

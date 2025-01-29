@@ -1,122 +1,135 @@
-import { Stack, Typography, Box } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Grid, Stack, Typography, TextField, Button, InputAdornment, Link, useTheme } from "@mui/material";
+import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailIcon from "@mui/icons-material/Mail";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import LinkerShare from "./LinkerShare";
-import { isMobile } from "react-device-detect";
-import Grid from '@mui/material/Grid2';
-import photo from "../assets/svg/logo.jpg"
+import PublicMenu from "../mock/menu";
+import logo from "../assets/svg/logo.jpg"
+import { BaseColor } from "./Tools";
 
+const Footer = () => {
+  const [email, setEmail] = useState("");
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("ایمیل ارسال شد:", email);
+    // اینجا می‌تونید کد ارسال ایمیل به بک‌اند رو اضافه کنید
+  };
 
-function Footer() {
+  const menuItems = PublicMenu();
+
   return (
     <footer>
-      <Stack width={"100%"} m={0} p={3} backgroundColor={"black"}>
-        <Grid container spacing={2} justifyContent="space-between">
-
-          <Grid item xs={6} sm={6} md={6}>
-            <Box
-              component="img"
-              src={photo}
-              alt="logo"
-              sx={{ width: "100px", height: "100px" , marginRight: "8px" }}
-
-            />
-
-            <Box display="flex" alignItems="center">
-              <Box>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <PhoneIcon style={{ color: "orange", marginRight: "8px" }} fontSize="medium" />
-                  <Typography
-                    sx={{
-                      marginLeft: "20px",
-                      color: "whitesmoke",
-                      fontSize: isMobile ? 15 : 18,
-                      fontFamily: "morabbaBold",
-                    }}
-                  >
-                    تلفن تماس:
-                  </Typography>
-                  <Typography sx={{
-                    marginLeft: "5px",
-                    color: "whitesmoke",
-                    fontSize: isMobile ? 15 : 18,
-                    fontFamily: "morabbaBold",
-                  }}>                  026-33515366
-                  </Typography>
-                </Box>
-
-
-              </Box>
+      <Stack width="100%" m={0} p={3} sx={{ backgroundColor: "black", color: "whitesmoke" }}>
+        <Grid container spacing={3} justifyContent="space-around">
+          {/* ستون اطلاعات تماس */}
+          <Grid item xs={12} sm={6} md={4}>
+            <Box component="img" src={logo} alt="logo" sx={{ width: 150, height: 150, mb: 2 }} />
+            <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+              <PhoneIcon style={{ color: "orange" }} />
+              <Typography sx={{ ml: 1 }}>تلفن تماس: 026-33515366</Typography>
             </Box>
-            <Box>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <LocationOnIcon style={{ color: "orange", marginRight: "8px" }} fontSize="medium" />
-                <Typography sx={{
-                  marginLeft: "20px",
-                  color: "whitesmoke",
-                  fontSize: isMobile ? 15 : 18,
-                  fontFamily: "morabbaBold",
-                }}>
-                  آدرس:
-                </Typography>
-                <Typography sx={{
-                  marginLeft: "5px",
-                  color: "whitesmoke",
-                  fontSize: isMobile ? 15 : 18,
-                  fontFamily: "morabbaBold",
-                }}>                کرج، مهرویلا، میدان معلم، ساختمان اورانوس ،واحد16
-                </Typography>
-              </Box>
-
-
+            <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+              <LocationOnIcon style={{ color: "orange" }} />
+              <Typography sx={{ ml: 1 }}>کرج، مهرویلا، میدان معلم، ساختمان اورانوس، واحد 16</Typography>
             </Box>
-            <Box >
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <MailIcon style={{ color: "orange", marginRight: "8px" }} fontSize="medium" />
-                <Typography sx={{
-                  marginLeft: "20px",
-                  color: "whitesmoke",
-                  fontSize: isMobile ? 15 : 18,
-                  fontFamily: "morabbaBold",
-                }}>
-                  ایمیل:
-                </Typography>
-                <Typography sx={{
-                  marginLeft: "5px",
-                  color: "whitesmoke",
-                  fontSize: isMobile ? 15 : 18,
-                  fontFamily: "morabbaBold",
-                }}>
-                  info@itols.ir
-                </Typography>
-              </Box>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+              <MailIcon style={{ color: "orange" }} />
+              <Typography sx={{ ml: 1 }}>info@itols.ir</Typography>
             </Box>
-            <Box>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <TelegramIcon style={{ color: "orange", marginRight: "8px" }} fontSize="medium" />
-                <Typography sx={{
-                  marginLeft: "20px",
-                  color: "whitesmoke",
-                  fontSize: isMobile ? 15 : 18,
-                  fontFamily: "morabbaBold",
-                }}>
-                  شبکه های اجتماعی
-                </Typography>
-              </Box>
-              <LinkerShare showBox="true" sec="a" id="0" myLink="https://itols.ir" />
+            <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+              <TelegramIcon style={{ color: "orange" }} />
+              <Typography sx={{ ml: 1 }}>شبکه‌های اجتماعی</Typography>
             </Box>
           </Grid>
 
-          <Grid>
+          {/* ستون لینک‌های مرتبط */}
+          <Grid item xs={12} sm={6} md={4}>
+  <Typography 
+    sx={{ 
+      fontSize: 18, 
+      mb: 2, 
+      fontWeight: "bold", 
+      color: "whitesmoke", 
+      textAlign: "center" // وسط چین کردن عنوان
+    }}
+  >
+    لینک‌های مرتبط
+  </Typography>
+  <Box 
+    sx={{ 
+      display: "flex", 
+      flexDirection: "column", 
+      alignItems: "center", // لینک‌ها وسط چین شوند
+      gap: 1.5, 
+      p: 2, 
+      borderRadius: "10px", 
+    }}
+  >
+    {menuItems.map((item) => (
+      <Link 
+        key={item.id} 
+        href={item.link} 
+        sx={{  
+          color: "whitesmoke", 
+          textDecoration: "none", 
+          fontSize: 16, 
+          transition: "0.3s",
+          textAlign: "center", // اطمینان از وسط‌چین بودن متن
+          "&:hover": { color: "orange", textDecoration: "underline" }
+        }}
+      >
+        {item.title}
+      </Link>
+    ))}
+  </Box>
+</Grid>
 
+
+          {/* ستون فرم ارتباط */}
+          <Grid item xs={12} sm={12} md={4}>
+            <Typography sx={{ fontSize: 18, mb: 2, fontWeight: "bold" }}>با ما در ارتباط باشید</Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                maxWidth: 400,
+                mx: "auto",
+                mt: 5,
+                borderRadius:"50%",
+
+              }}
+            >
+              <TextField
+                label="ایمیل"
+                type="email"
+                variant="outlined"
+                fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <EmailIcon color="primary" />
+                    </InputAdornment>
+                  ),
+                }}
+                required
+              />
+              <Button type="submit" variant="contained" color="primary">
+                ارسال
+              </Button>
+            </Box>
           </Grid>
         </Grid>
       </Stack>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -50,7 +50,7 @@ const Home = () => {
 
     return (
         <Layout FullWidth={true}>
-           
+
 
             <Box>
                 <HeroSection />
@@ -71,15 +71,13 @@ const Home = () => {
                 }}
             >
                 <Typography
-                    variant="h3">
+                    variant="h5">
                     <AnimatedTitle
                         title="محصولات"
-                        containerStyles={{
-                            color: "#ff0310",
-                        }}
+                        
                         wordStyles={{
-                            fontSize: "36px",
-                            color: "#fc0000",
+                            fontSize: "30px",
+                            color: "#eb5326",
                         }}
                     />
                 </Typography>
@@ -91,8 +89,8 @@ const Home = () => {
                     }}
                     spaceBetween={10}
                     slidesPerView={3}
-                    navigation={true}
-                    style={{ height: '40vh' }}
+                    navigation={false}
+                    style={{ height: '30vh' }}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
@@ -127,7 +125,7 @@ const Home = () => {
                                                 width: '100%',
                                                 height: '50%',
                                                 display: 'flex',
-                                                margin: 'auto',
+                                                margin: '10px auto',
                                                 transition: 'transform 0.3s ease-in-out',
                                             }}
                                         />
@@ -139,7 +137,7 @@ const Home = () => {
                                                 width={'100%'}
                                                 sx={{
                                                     backgroundColor: 'rgba(0,0,0,0.7)',
-                                                    padding: { xs: '8px', sm: '10px', md: '15px' },
+                                                    padding: { xs: '6px', sm: '8px', md: '10px' },
                                                     textAlign: 'center',
                                                     color: 'white',
                                                     backdropFilter: 'blur(10px)',
@@ -193,7 +191,7 @@ const Home = () => {
                 style={{ zIndex: 450 }}
                 sx={{
                     backgroundColor: '#F5F5F5', // پس‌زمینه ملایم
-                    boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.15)', // سایه برای برجسته‌کردن
+                    boxShadow: '0px 10px 20px 0px rgba(0, 0, 0, 0.15)', // سایه برای برجسته‌کردن
                     borderRadius: '16px', // گوشه‌های گرد
                 }}
             >
@@ -259,7 +257,7 @@ const Home = () => {
                                                 style={{
                                                     objectFit: 'cover',
                                                     width: '100%',
-                                                    height: '220px',
+                                                    height: '200px',
                                                     transition: 'all 0.4s ease',
                                                 }}
                                             />
@@ -301,18 +299,18 @@ const Home = () => {
                                     <Link to="/Store">
                                         <Box
                                             sx={{
-                                                width: '100%',
+                                                width: '90%',
                                                 minHeight: 180,
                                                 height: '100%',
                                                 borderRadius: '16px',
-                                                backgroundColor: '#0066CC',
+                                                backgroundColor: '#eb5326',
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 color: 'white',
                                                 fontWeight: 'bold',
                                                 '&:hover': {
-                                                    backgroundColor: '#0052A3', // تغییر رنگ در هاور
+                                                    backgroundColor: '#eb5150', // تغییر رنگ در هاور
                                                     transform: 'scale(1.05)',
                                                 },
                                                 transition: 'all 0.3s ease',

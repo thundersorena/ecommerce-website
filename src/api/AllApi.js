@@ -11,8 +11,10 @@ export { getAllProducts };
 
 const BASE_URL2 = "https://fakestoreapi.com/products/categories";
 
-export const categories = async () => {
+ const categories = async () => {
     const response = await axios.get(BASE_URL2);
     console.log(response.data)
     return response.data;
 }
+
+export {categories};
