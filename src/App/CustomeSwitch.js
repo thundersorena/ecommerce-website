@@ -9,7 +9,7 @@ const CustomSwitch = ({ children }) => {
     TopBarProgress.config({
         barColors: {
             "0": "gray",
-            "1.0": "#fff"
+            "1.0": "#eb5326"
         },
         barThickness: 5,
         shadowBlur: 5

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Box } from "@mui/material";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import photo from "../../assets/svg/10.jpg";
+import photo from "../../assets/svg/1.png";
 
 gsap.registerPlugin(ScrollTrigger);
 

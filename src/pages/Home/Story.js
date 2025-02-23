@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { Box, Grid, Typography } from "@mui/material";
 import AnimatedTitle from "../../component/AnimatedTitle";
-import photo from "../../assets/svg/10.jpg";
+import photo from "../../assets/svg/1.png";
 
 const FloatingImage = () => {
     const handleMouseMove = (e, element) => {

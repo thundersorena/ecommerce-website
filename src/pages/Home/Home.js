@@ -74,7 +74,7 @@ const Home = () => {
                     variant="h5">
                     <AnimatedTitle
                         title="محصولات"
-                        
+
                         wordStyles={{
                             fontSize: "30px",
                             color: "#eb5326",
@@ -173,8 +173,6 @@ const Home = () => {
                     )}
                 </Swiper>
             </Paper>
-
-
 
             <Box>
                 <GSAPExample />

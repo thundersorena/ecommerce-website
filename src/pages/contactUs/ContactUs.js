@@ -16,8 +16,8 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import MapComponent from '../../component/MapComponent';
-import photo from "../../assets/svg/5.jpg"
-import photo2 from "../../assets/svg/5.jpg"
+import photo from "../../assets/svg/1.png"
+import photo2 from "../../assets/svg/2.png"
 import ImageComponent from '../../component/ImageComponent';
 
 gsap.registerPlugin(ScrollTrigger);
